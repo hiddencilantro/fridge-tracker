@@ -1,7 +1,7 @@
 class ListsController < ApplicationController
 
     get '/lists' do #index
-        erb :'lists/index'
+        redirect "/users/#{session[:user_id]}"
     end
     
     get '/lists/new' do #new
