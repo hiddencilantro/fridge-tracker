@@ -17,6 +17,7 @@ class ListsController < ApplicationController
 
     get '/lists/:id' do #show
         @list = List.find_by_id(params[:id])
+        session[:list_id] = @list.id
         erb :'lists/show'
     end
 

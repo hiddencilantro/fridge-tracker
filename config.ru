@@ -7,4 +7,5 @@ end
 use SessionsController
 use UsersController
 use ListsController
+use ItemsController
 run ApplicationController
