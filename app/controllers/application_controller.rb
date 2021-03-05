@@ -10,7 +10,11 @@ class ApplicationController < Sinatra::Base
   end
 
   get "/" do
-    erb :main
+    if session[:user_id]
+      redirect "/users/#{session[:user_id]}"
+    else
+      erb :main
+    end
   end
 
 end

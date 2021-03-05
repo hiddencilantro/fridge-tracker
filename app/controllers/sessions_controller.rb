@@ -2,7 +2,7 @@ class SessionsController < ApplicationController
 
     get '/login' do
         if session[:user_id]
-            redirect "/users/#{user.id}"
+            redirect "/users/#{session[:user_id]}"
         else
             erb :'sessions/login'
         end
