@@ -2,3 +2,10 @@
 <a href="/logout">Logout</a>
 <br><br>
 <a href="/lists/new">Create a new list</a>
+<br><br>
+<ul>
+    <% @user.lists.each do |list| %>
+    <li><a href=<%= "/lists/#{list.id}"%>><%= list.date %> - <%= list.title %></a></li>
+    <% end %>
+</ul>
+

@@ -15,7 +15,7 @@ class SessionsController < ApplicationController
                 session[:user_id] = user.id
                 redirect "/users/#{user.id}"
             else
-                "Incorrect password"
+                "Password did not match. Please try again."
             end
         else
             "Username does not exist"
