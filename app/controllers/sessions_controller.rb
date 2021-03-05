@@ -5,7 +5,9 @@ class SessionsController < ApplicationController
     end
 
     post '/signup' do
-        
+        user = User.create(params[:user])
+        session[:user_id] = user.id
+        redirect "/users/#{user.id}"
     end
 
     get '/login' do
@@ -14,5 +16,10 @@ class SessionsController < ApplicationController
 
     post '/login' do
 
+    end
+
+    get '/logout' do
+        session.clear
+        redirect "/"
     end
 end
