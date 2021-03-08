@@ -6,4 +6,15 @@ class ItemsController < ApplicationController
         item.save
         redirect "/lists/#{item.list_id}"
     end
+
+    get '/items/:id/edit' do
+        @item = Item.find_by_id(params[:id])
+        erb :'items/edit'
+    end
+
+    patch '/items/:id' do
+        item = Item.find_by_id(params[:id])
+        item.update(params[:item])
+        redirect "/lists/#{item.list_id}"
+    end
 end
