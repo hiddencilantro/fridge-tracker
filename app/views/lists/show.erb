@@ -24,3 +24,8 @@
 </form>
 <br>
 <a href=<%= "/users/#{@list.user_id}" %>><< Back</a>
+<br><br>
+<form action=<%= "/lists/#{@list.id}" %> method="POST">
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="submit" value="DELETE THIS LIST">
+</form>

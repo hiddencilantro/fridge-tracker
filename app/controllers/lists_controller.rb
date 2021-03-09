@@ -21,4 +21,10 @@ class ListsController < ApplicationController
         erb :'lists/show'
     end
 
+    delete '/lists/:id' do #delete
+        list = List.find_by_id(params[:id])
+        list.destroy
+        redirect "/users/#{list.user_id}"
+    end
+
 end
