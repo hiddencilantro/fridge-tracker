@@ -1,4 +1,4 @@
-<h2>Edit List</h2>
+<h2>Edit <%= @list.title %></h2>
 
 <form action=<%= "/lists/#{@list.id}" %> method="POST">
     <input type="hidden" name="_method" value="PATCH">

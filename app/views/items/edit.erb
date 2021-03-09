@@ -1,4 +1,4 @@
-<h2>Edit this item</h2>
+<h2>Edit <%= @item.name %></h2>
 
 <form action=<%= "/items/#{@item.id}" %> method="POST" style="display: inline">
     <input type="hidden" name="_method" value="PATCH">
