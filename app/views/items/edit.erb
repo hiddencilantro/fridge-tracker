@@ -7,7 +7,7 @@
     <label for="quantity">Quantity: </label>
     <input type="number" name="item[quantity]" value="<%= @item.quantity %>">
     <br><br>
-    <input type="submit" value="Edit Item">
+    <input type="submit" value="Done">
 </form>
 
 <form action=<%= "/items/#{@item.id}" %> method="POST" style="display: inline">
