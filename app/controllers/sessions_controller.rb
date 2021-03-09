@@ -1,8 +1,8 @@
 class SessionsController < ApplicationController
 
     get '/login' do
-        if session[:user_id]
-            redirect "/users/#{session[:user_id]}"
+        if logged_in?
+            redirect "/users/#{current_user.id}"
         else
             erb :'users/login'
         end
@@ -13,9 +13,9 @@ class SessionsController < ApplicationController
         if user
             if user.authenticate(params[:password])
                 session[:user_id] = user.id
-                redirect "/users/#{user.id}"
+                redirect "/users/#{current_user.id}"
             else
-                "Password did not match. Please try again."
+                "Invalid password. Please try again."
             end
         else
             "Username does not exist"

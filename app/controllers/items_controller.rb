@@ -1,7 +1,12 @@
 class ItemsController < ApplicationController
 
+    # before do
+    #     require_login
+    # end
+
     get '/items' do #index
         redirect "/lists/#{session[:list_id]}"
+        # redirect "/users/#{current_user.id}"
     end
 
     post '/items' do #create
@@ -11,8 +16,8 @@ class ItemsController < ApplicationController
         redirect "/lists/#{item.list_id}"
     end
 
-    get '/items/:id/edit' do #edit
-        @item = Item.find_by_id(params[:id])
+    get '/items/:id/edit' do #edit // somehow redirects to '/login' without require_login
+        check_for_authorization
         erb :'items/edit'
     end
 
@@ -27,4 +32,12 @@ class ItemsController < ApplicationController
         item.destroy
         redirect "/lists/#{item.list_id}"
     end
+
+    private
+
+    def check_for_authorization
+        @item = Item.find_by_id(params[:id])
+        redirect back if @item == nil || !current_user.lists.include?(@item.list)
+    end
+
 end
