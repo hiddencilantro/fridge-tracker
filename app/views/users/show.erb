@@ -1,9 +1,9 @@
 <h2>Refrigerator Inventory for <%= "#{@user.firstname} #{@user.lastname}" %></h2>
 
-<form action="/logout" method="GET">
-    <button>Sign out</button>
-    <br><br>
-    <button formaction="/lists/new">Create a new list</button>
+<a href="/logout">Sign Out</a>
+<br><br>
+<form action="/lists/new" method="GET">
+    <button>Create New List</button>
 </form>
 <br>
 <ul>
@@ -16,4 +16,3 @@
     </li>
     <% end %>
 </ul>
-
