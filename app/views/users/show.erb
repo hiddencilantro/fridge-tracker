@@ -1,4 +1,4 @@
-<h2>List(s) for <%= "#{@user.firstname} #{@user.lastname}" %></h2>
+<h2>Refrigerator Inventory for <%= "#{@user.firstname} #{@user.lastname}" %></h2>
 
 <form action="/logout" method="GET">
     <button>Sign out</button>
@@ -8,7 +8,7 @@
 <br>
 <ul>
     <% @user.lists.each do |list| %>
-    <li><a href=<%= "/lists/#{list.id}"%>><%= list.date %> - <%= list.title %></a></li>
+    <li><a href=<%= "/lists/#{list.id}" %>><%= list.date %> - <%= list.title %></a></li>
     <% end %>
 </ul>
 
