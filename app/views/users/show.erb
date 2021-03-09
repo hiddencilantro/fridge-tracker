@@ -8,7 +8,12 @@
 <br>
 <ul>
     <% @user.lists.each do |list| %>
-    <li><a href=<%= "/lists/#{list.id}" %>><%= list.date %> - <%= list.title %></a></li>
+    <li>
+        <a href=<%= "/lists/#{list.id}" %>><%= list.date %> - <%= list.title %></a>
+        <form action=<%= "/lists/#{list.id}/edit" %> method="GET" style="display: inline">
+            <input type="submit" value="Edit">
+        </form>
+    </li>
     <% end %>
 </ul>
 

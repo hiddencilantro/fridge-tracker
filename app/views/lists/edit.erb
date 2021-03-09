@@ -1,0 +1,11 @@
+<h2>Edit List</h2>
+
+<form action=<%= "/lists/#{@list.id}" %> method="POST">
+    <input type="hidden" name="_method" value="PATCH">
+    <label for="title">Title: </label>
+    <input type="text" name="list[title]" value="<%= @list.title %>">
+    <label for="date">Date: </label>
+    <input type="date" name="list[date]" value=<%= @list.date %>>
+    <br><br>
+    <input type="submit" value="Done">
+</form>

@@ -21,7 +21,18 @@ class ListsController < ApplicationController
         erb :'lists/show'
     end
 
-    delete '/lists/:id' do #delete
+    get '/lists/:id/edit' do #edit
+        @list = List.find_by_id(params[:id])
+        erb :'lists/edit'
+    end
+
+    patch '/lists/:id' do #update
+        list = List.find_by_id(params[:id])
+        list.update(params[:list])
+        redirect "/users/#{list.user_id}"
+    end
+
+    delete '/lists/:id' do #destroy
         list = List.find_by_id(params[:id])
         list.destroy
         redirect "/users/#{list.user_id}"
