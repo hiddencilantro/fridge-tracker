@@ -22,15 +22,15 @@ class ItemsController < ApplicationController
     end
 
     patch '/items/:id' do #update
-        item = Item.find_by_id(params[:id])
-        item.update(params[:item])
-        redirect "/lists/#{item.list_id}"
+        check_for_authorization
+        @item.update(params[:item])
+        redirect "/lists/#{@item.list_id}"
     end
 
     delete '/items/:id' do #destroy
-        item = Item.find_by_id(params[:id])
-        item.destroy
-        redirect "/lists/#{item.list_id}"
+        check_for_authorization
+        @item.destroy
+        redirect "/lists/#{@item.list_id}"
     end
 
     private
