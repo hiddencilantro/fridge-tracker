@@ -5,7 +5,7 @@
     <label for="name">Item Name: </label>
     <input type="text" name="item[name]" value="<%= @item.name %>">
     <label for="quantity">Quantity: </label>
-    <input type="number" name="item[quantity]" style="width: 3em" value="<%= @item.quantity %>">
+    <input type="number" name="item[quantity]" min="1" style="width: 3em" value="<%= @item.quantity %>">
     <br><br>
     <input type="submit" value="Done">
 </form>
