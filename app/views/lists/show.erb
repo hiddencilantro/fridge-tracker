@@ -2,9 +2,13 @@
 <ul>
     <% @list.items.each do |item| %>
         <li>
-            <%= item.name %> (<%= item.quantity %>)
-            <form action=<%= "/items/#{item.id}/edit" %> method="GET">
-                <button>Edit</button>
+            <%= item.name %> (Qty: <%= item.quantity %>)
+            <form action=<%= "/items/#{item.id}/edit" %> method="GET" style="display: inline">
+                <input type="submit" value="Edit">
+            </form>
+            <form action=<%= "/items/#{item.id}" %> method="POST" style="display: inline">
+                <input type="hidden" name="_method" value="DELETE">
+                <input type="submit" value="Delete">
             </form>
         </li>
     <% end %>

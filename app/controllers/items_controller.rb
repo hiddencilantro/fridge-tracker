@@ -17,4 +17,10 @@ class ItemsController < ApplicationController
         item.update(params[:item])
         redirect "/lists/#{item.list_id}"
     end
+
+    delete '/items/:id' do
+        item = Item.find_by_id(params[:id])
+        item.destroy
+        redirect "/lists/#{item.list_id}"
+    end
 end

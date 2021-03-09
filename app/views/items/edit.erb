@@ -1,8 +1,16 @@
-<form action=<%= "/items/#{@item.id}" %> method="POST">
+<h2>Edit this item</h2>
+
+<form action=<%= "/items/#{@item.id}" %> method="POST" style="display: inline">
     <input type="hidden" name="_method" value="PATCH">
     <label for="name">Item Name: </label>
     <input type="text" name="item[name]" value="<%= @item.name %>">
     <label for="quantity">Quantity: </label>
     <input type="number" name="item[quantity]" value="<%= @item.quantity %>">
+    <br><br>
     <input type="submit" value="Edit Item">
+</form>
+
+<form action=<%= "/items/#{@item.id}" %> method="POST" style="display: inline">
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="submit" value="Delete">
 </form>
