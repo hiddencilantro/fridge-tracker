@@ -1,5 +1,9 @@
 class ItemsController < ApplicationController
 
+    get '/items' do #index
+        redirect "/lists/#{session[:list_id]}"
+    end
+
     post '/items' do #create
         item = Item.new(params[:item])
         item.list_id = session[:list_id]
