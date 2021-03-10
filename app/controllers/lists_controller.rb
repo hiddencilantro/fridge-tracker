@@ -23,7 +23,7 @@ class ListsController < ApplicationController
         end
     end
 
-    get '/lists/:id' do #SHOW for list (item INDEX)
+    get '/lists/:id' do #SHOW for list (item INDEX, item NEW)
         check_for_authorization
         session[:list_id] = @list.id
 
