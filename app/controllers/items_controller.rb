@@ -5,7 +5,7 @@ class ItemsController < ApplicationController
     # end
 
     get '/items' do #INDEX (list SHOW)
-        redirect "/lists/#{session[:list_id]}"
+        redirect back #(?)redirects to user SHOW page rather than the page we're coming from
     end
 
     post '/items' do #CREATE
