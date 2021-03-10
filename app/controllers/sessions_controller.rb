@@ -2,7 +2,8 @@ class SessionsController < ApplicationController
 
     get '/login' do
         if logged_in?
-            redirect "/users/#{current_user.id}"
+            @error = "Hey #{current_user.firstname}, looks like you're already logged in! Sign out to log in with a different account."
+            erb :'users/show'
         else
             erb :'users/login'
         end

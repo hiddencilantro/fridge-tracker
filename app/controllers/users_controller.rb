@@ -2,7 +2,8 @@ class UsersController < ApplicationController
 
     get '/signup' do
         if logged_in?
-            "Looks like you're already logged in! Click here to return to your page or here to logout."
+            @error = "You must first sign out to register a new account."
+            erb :'users/show'
         else
             erb :'users/signup'
         end

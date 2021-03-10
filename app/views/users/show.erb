@@ -1,5 +1,9 @@
 <h2>Fridge Inventory for <%= "#{@user.firstname} #{@user.lastname}" %></h2>
 
+<% if @error %>
+    <p style="color: #FF0000"><%= @error %></p>
+<% end %>
+
 <a href="/logout">Sign Out</a>
 <br><br>
 <form action="/lists/new" method="GET">
