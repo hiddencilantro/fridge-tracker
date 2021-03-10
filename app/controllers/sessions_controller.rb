@@ -5,14 +5,14 @@ class SessionsController < ApplicationController
             @error = "Hey #{current_user.firstname}, looks like you're already logged in! Sign out to log in with a different account."
             erb :'users/show'
         else
-            erb :'users/login'
+            erb :'sessions/login'
         end
     end
 
     post '/login' do
         if params[:username].empty? || params[:password].empty?
             @error = "Username and password cannot be blank."
-            erb :'users/login'
+            erb :'sessions/login'
         else
             if user = User.find_by_username(params[:username])
                 if user.authenticate(params[:password])
@@ -20,11 +20,11 @@ class SessionsController < ApplicationController
                     redirect "/users/#{current_user.id}"
                 else
                     @error = "Incorrect password. Please try again."
-                    erb :'users/login'
+                    erb :'sessions/login'
                 end
             else
                 @error = "Username does not exist."
-                erb :'users/login'
+                erb :'sessions/login'
             end
         end
     end

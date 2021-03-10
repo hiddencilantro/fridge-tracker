@@ -4,8 +4,8 @@ class ItemsController < ApplicationController
     #     require_login
     # end
 
-    get '/items' do #INDEX (list SHOW)
-        redirect back #(?)redirects to user SHOW page rather than the page we're coming from
+    get '/items' do #INDEX (/lists/:id SHOW)
+        redirect back #(?)redirects to user SHOW page rather than previous page
     end
 
     post '/items' do #CREATE
@@ -19,7 +19,7 @@ class ItemsController < ApplicationController
         end
     end
 
-    get '/items/:id/edit' do #EDIT // (?)somehow redirects to '/login' without require_login
+    get '/items/:id/edit' do #EDIT // (?)redirects to '/login' without require_login
         check_for_authorization
         erb :'items/edit'
     end

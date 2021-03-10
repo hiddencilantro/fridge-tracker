@@ -1,26 +1,26 @@
 class UsersController < ApplicationController
 
-    get '/signup' do
+    get '/signup' do #NEW (/users/new)
         if logged_in?
             @error = "You must first sign out to register a new account."
             erb :'users/show'
         else
-            erb :'users/signup'
+            erb :'users/new'
         end
     end
 
-    post '/signup' do
+    post '/users' do #CREATE
         user = User.new(params[:user])
         if user.save
             session[:user_id] = user.id
             redirect "/users/#{current_user.id}"
         else
             @error = "All fields required. Username must be unique."
-            erb :'users/signup'
+            erb :'users/new'
         end
     end
 
-    get '/users/:id' do #SHOW (list INDEX)
+    get '/users/:id' do #SHOW (/list INDEX)
         require_login
         erb :'users/show'
     end

@@ -4,7 +4,7 @@ class ListsController < ApplicationController
         require_login
     end
 
-    get '/lists' do #INDEX (user SHOW)
+    get '/lists' do #INDEX (/users/:id SHOW)
         redirect "/users/#{current_user.id}"
     end
     
@@ -23,7 +23,7 @@ class ListsController < ApplicationController
         end
     end
 
-    get '/lists/:id' do #SHOW for list (item INDEX, item NEW)
+    get '/lists/:id' do #SHOW (/items INDEX, /items/new NEW)
         check_for_authorization
         session[:list_id] = @list.id
 
