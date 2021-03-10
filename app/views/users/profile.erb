@@ -8,9 +8,8 @@
     <button>Edit Profile</button>
 </form>
 <br>
-<form action=<%= "/users/#{current_user.id}"%> method="POST">
-    <input type="hidden" name="_method" value="DELETE">
-    <input type="submit" value="DELETE ACCOUNT">
+<form action=<%= "/users/#{current_user.id}/delete"%> method="GET">
+    <button>DELETE ACCOUNT</button>
 </form>
 
 <br>

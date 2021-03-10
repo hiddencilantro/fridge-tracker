@@ -45,6 +45,11 @@ class UsersController < ApplicationController
         end
     end
 
+    get '/users/:id/delete' do
+        require_login
+        erb :'users/delete'
+    end
+
     delete '/users/:id' do #DESTROY
         current_user.destroy
         redirect "/"
