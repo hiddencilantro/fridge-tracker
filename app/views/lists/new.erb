@@ -1,5 +1,9 @@
 <h2>Create A New List</h2>
 
+<% if @error %>
+    <p style="color: #FF0000"><%= @error %></p>
+<% end %>
+
 <form action="/lists" method="POST">
     <label for="title">Title: </label>
     <input type="text" name="list[title]">

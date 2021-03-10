@@ -15,13 +15,21 @@ class ListsController < ApplicationController
     post '/lists' do #create
         list = List.new(params[:list])
         list.user_id = current_user.id
-        list.save
-        redirect "/lists/#{list.id}"
+        if list.save
+            redirect "/lists/#{list.id}"
+        else
+            @error = "All fields are required."
+            erb :'lists/new'
+        end
     end
 
     get '/lists/:id' do #show
         check_for_authorization
         session[:list_id] = @list.id
+
+        @error = session[:error]
+        session.delete(:error)
+
         erb :'lists/show'
     end
 
@@ -32,8 +40,12 @@ class ListsController < ApplicationController
 
     patch '/lists/:id' do #update
         check_for_authorization
-        @list.update(params[:list])
-        redirect "/users/#{current_user.id}"
+        if @list.update(params[:list])
+            redirect "/users/#{current_user.id}"
+        else
+            @error = "Title cannot be blank."
+            erb :'lists/edit'
+        end
     end
 
     delete '/lists/:id' do #destroy

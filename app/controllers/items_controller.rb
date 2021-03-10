@@ -12,8 +12,12 @@ class ItemsController < ApplicationController
     post '/items' do #create
         item = Item.new(params[:item])
         item.list_id = session[:list_id]
-        item.save
-        redirect "/lists/#{item.list_id}"
+        if item.save
+            redirect "/lists/#{item.list_id}"
+        else
+            session[:error] = "All fields are required."
+            redirect "/lists/#{item.list_id}"
+        end
     end
 
     get '/items/:id/edit' do #edit // somehow redirects to '/login' without require_login

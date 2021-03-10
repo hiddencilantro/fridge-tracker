@@ -9,16 +9,22 @@ class SessionsController < ApplicationController
     end
 
     post '/login' do
-        user = User.find_by_username(params[:username])
-        if user
-            if user.authenticate(params[:password])
-                session[:user_id] = user.id
-                redirect "/users/#{current_user.id}"
-            else
-                "Invalid password. Please try again."
-            end
+        if params[:username].empty? || params[:password].empty?
+            @error = "Username and password cannot be blank."
+            erb :'users/login'
         else
-            "Username does not exist"
+            if user = User.find_by_username(params[:username])
+                if user.authenticate(params[:password])
+                    session[:user_id] = user.id
+                    redirect "/users/#{current_user.id}"
+                else
+                    @error = "Incorrect password. Please try again."
+                    erb :'users/login'
+                end
+            else
+                @error = "Username does not exist."
+                erb :'users/login'
+            end
         end
     end
 

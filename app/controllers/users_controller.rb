@@ -9,9 +9,14 @@ class UsersController < ApplicationController
     end
 
     post '/signup' do
-        user = User.create(params[:user])
-        session[:user_id] = user.id
-        redirect "/users/#{current_user.id}"
+        user = User.new(params[:user])
+        if user.save
+            session[:user_id] = user.id
+            redirect "/users/#{current_user.id}"
+        else
+            @error = "Invalid entry."
+            erb :'users/signup'
+        end
     end
 
     get '/users/:id' do
