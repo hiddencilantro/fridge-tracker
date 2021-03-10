@@ -4,15 +4,15 @@ class ListsController < ApplicationController
         require_login
     end
 
-    get '/lists' do #index
+    get '/lists' do #INDEX (user SHOW)
         redirect "/users/#{current_user.id}"
     end
     
-    get '/lists/new' do #new
+    get '/lists/new' do #NEW
         erb :'lists/new'
     end
 
-    post '/lists' do #create
+    post '/lists' do #CREATE
         list = List.new(params[:list])
         list.user_id = current_user.id
         if list.save
@@ -23,7 +23,7 @@ class ListsController < ApplicationController
         end
     end
 
-    get '/lists/:id' do #show
+    get '/lists/:id' do #SHOW for list (item INDEX)
         check_for_authorization
         session[:list_id] = @list.id
 
@@ -33,12 +33,12 @@ class ListsController < ApplicationController
         erb :'lists/show'
     end
 
-    get '/lists/:id/edit' do #edit
+    get '/lists/:id/edit' do #EDIT
         check_for_authorization
         erb :'lists/edit'
     end
 
-    patch '/lists/:id' do #update
+    patch '/lists/:id' do #UPDATE
         check_for_authorization
         if @list.update(params[:list])
             redirect "/users/#{current_user.id}"
@@ -48,7 +48,7 @@ class ListsController < ApplicationController
         end
     end
 
-    delete '/lists/:id' do #destroy
+    delete '/lists/:id' do #DESTROY
         check_for_authorization
         @list.destroy
         redirect "/users/#{current_user.id}"

@@ -4,12 +4,11 @@ class ItemsController < ApplicationController
     #     require_login
     # end
 
-    get '/items' do #index
+    get '/items' do #INDEX (list SHOW)
         redirect "/lists/#{session[:list_id]}"
-        # redirect "/users/#{current_user.id}"
     end
 
-    post '/items' do #create
+    post '/items' do #CREATE
         item = Item.new(params[:item])
         item.list_id = session[:list_id]
         if item.save
@@ -20,18 +19,18 @@ class ItemsController < ApplicationController
         end
     end
 
-    get '/items/:id/edit' do #edit // somehow redirects to '/login' without require_login
+    get '/items/:id/edit' do #EDIT // (?)somehow redirects to '/login' without require_login
         check_for_authorization
         erb :'items/edit'
     end
 
-    patch '/items/:id' do #update
+    patch '/items/:id' do #UPDATE
         check_for_authorization
         @item.update(params[:item])
         redirect "/lists/#{@item.list_id}"
     end
 
-    delete '/items/:id' do #destroy
+    delete '/items/:id' do #DESTROY
         check_for_authorization
         @item.destroy
         redirect "/lists/#{@item.list_id}"

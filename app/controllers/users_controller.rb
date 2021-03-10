@@ -20,22 +20,22 @@ class UsersController < ApplicationController
         end
     end
 
-    get '/users/:id' do
+    get '/users/:id' do #SHOW (list INDEX)
         require_login
         erb :'users/show'
     end
 
-    get '/users/:id/profile' do
+    get '/users/:id/profile' do #SHOW
         require_login
         erb :'users/profile'
     end
 
-    get '/users/:id/profile/edit' do
+    get '/users/:id/profile/edit' do #EDIT
         require_login
         erb :'users/edit'
     end
 
-    patch '/users/:id/profile' do
+    patch '/users/:id/profile' do #UPDATE
         current_user.skip_validations = true
         if current_user.update(params[:user])
             redirect "/users/#{current_user.id}/profile"
@@ -45,7 +45,7 @@ class UsersController < ApplicationController
         end
     end
 
-    delete '/users/:id' do
+    delete '/users/:id' do #DESTROY
         current_user.destroy
         redirect "/"
     end
