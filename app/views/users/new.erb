@@ -4,17 +4,19 @@
     <p style="color: #FF0000"><%= @error %></p>
 <% end %>
 
+<em style="font-size: 12px">* indicates a required field</em>
+<br><br>
 <form action="/users" method="POST">
-    <label for="username">*Username: </label>
-    <input type ="text" name="user[username]">
+    <label for="username">* Username: </label>
+    <input type ="text" name="user[username]" placeholder="Username (required)">
     <br><br>
-    <label for="password">*Password: </label>
-    <input type="password" name="user[password]">
+    <label for="password">* Password: </label>
+    <input type="password" name="user[password]" placeholder="Password (required)">
     <br><br>
-    <label for="firstname">*First Name: </label>
-    <input type="text" name="user[firstname]">
-    <label for="lastname">*Last Name: </label>
-    <input type="text" name="user[lastname]">
+    <label for="firstname">* First Name: </label>
+    <input type="text" name="user[firstname]" placeholder="First Name (required)">
+    <label for="lastname">* Last Name: </label>
+    <input type="text" name="user[lastname]" placeholder="Last Name (required)">
     <br><br>
     <input type="submit" value="Create account!">
 </form>
