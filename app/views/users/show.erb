@@ -1,4 +1,4 @@
-<h2>Fridge Inventory for <%= "#{@user.firstname} #{@user.lastname}" %></h2>
+<h2>Welcome, <%= "#{@user.firstname} #{@user.lastname}" %>!</h2>
 
 <% if @error %>
     <p style="color: #FF0000"><%= @error %></p>
@@ -7,16 +7,19 @@
 <a href="/logout">Sign Out</a>
 <br><br>
 <form action="/lists/new" method="GET">
-    <button>Create New List</button>
+    <button>Create A New Inventory</button>
 </form>
 <br>
-<ul>
-    <% @user.lists.order(date: :desc).each do |list| %>
-    <li>
-        <a href=<%= "/lists/#{list.id}" %>><%= list.date %> - <%= list.title %></a>
-        <form action=<%= "/lists/#{list.id}/edit" %> method="GET" style="display: inline">
-            <input type="submit" value="Edit">
-        </form>
-    </li>
-    <% end %>
-</ul>
+<% if @user.lists %>
+    <p>Or click an inventory below to view its items:</p>
+    <ul>
+        <% @user.lists.order(date: :desc).each do |list| %>
+        <li>
+            <a href=<%= "/lists/#{list.id}" %>><%= list.date %> - <%= list.title %></a>
+            <form action=<%= "/lists/#{list.id}/edit" %> method="GET" style="display: inline">
+                <input type="submit" value="Edit">
+            </form>
+        </li>
+        <% end %>
+    </ul>
+<%end%>
