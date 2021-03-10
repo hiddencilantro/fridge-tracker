@@ -15,7 +15,7 @@ class UsersController < ApplicationController
             session[:user_id] = user.id
             redirect "/users/#{current_user.id}"
         else
-            @error = "Invalid entry."
+            @error = "All fields required. Username must be unique."
             erb :'users/signup'
         end
     end
@@ -24,4 +24,30 @@ class UsersController < ApplicationController
         require_login
         erb :'users/show'
     end
+
+    get '/users/:id/profile' do
+        require_login
+        erb :'users/profile'
+    end
+
+    get '/users/:id/profile/edit' do
+        require_login
+        erb :'users/edit'
+    end
+
+    patch '/users/:id/profile' do
+        current_user.skip_validations = true
+        if current_user.update(params[:user])
+            redirect "/users/#{current_user.id}/profile"
+        else
+            @error = "All fields required. Username must be unique."
+            erb :'users/edit'
+        end
+    end
+
+    delete '/users/:id' do
+        current_user.destroy
+        redirect "/"
+    end
+
 end

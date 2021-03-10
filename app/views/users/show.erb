@@ -5,6 +5,8 @@
 <% end %>
 
 <a href="/logout">Sign Out</a>
+<br>
+<a href=<%= "/users/#{@user.id}/profile" %>>My Profile</a>
 <br><br>
 <form action="/lists/new" method="GET">
     <button>Create A New Inventory</button>

@@ -1,0 +1,20 @@
+<h2>Edit Your Profile</h2>
+
+<% if @error %>
+    <p style="color: #FF0000"><%= @error %></p>
+<% end %>
+
+<form action=<%= "/users/#{current_user.id}/profile" %> method="POST">
+    <input type="hidden" name="_method" value="PATCH">
+    <label for="username">Username: </label>
+    <input type ="text" name="user[username]" value="<%= current_user.username %>">
+    <br><br>
+    <label for="firstname">First Name: </label>
+    <input type="text" name="user[firstname]" value="<%= current_user.firstname %>">
+    <label for="lastname">Last Name: </label>
+    <input type="text" name="user[lastname]" value="<%= current_user.lastname %>">
+    <br><br>
+    <input type="submit" value="Save">
+</form>
+<br>
+<a href=<%= "/users/#{current_user.id}/profile" %>><< Back</a>

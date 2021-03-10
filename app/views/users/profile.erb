@@ -1,0 +1,17 @@
+<h2>Manage Your Profile</h2>
+
+<p>Username: <%= "#{current_user.username}" %></p>
+<p>Name: <%= "#{current_user.firstname} #{current_user.lastname}" %></p>
+<br>
+
+<form action=<%= "/users/#{current_user.id}/profile/edit" %> method="GET">
+    <button>Edit Profile</button>
+</form>
+<br>
+<form action=<%= "/users/#{current_user.id}"%> method="POST">
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="submit" value="DELETE ACCOUNT">
+</form>
+
+<br>
+<a href=<%= "/users/#{current_user.id}" %>><< Back</a>
