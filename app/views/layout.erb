@@ -11,16 +11,52 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link rel="stylesheet" href="/stylesheets/main.css" />
+    <!-- <link href="/css/bootstrap.css" rel="stylesheet">
+    <link href="/css/bootstrap.rtl.css" rel="stylesheet"> -->
+    <link href="/stylesheets/main.css" rel="stylesheet">
+
   </head>
   <body>
     <div class="wrapper">
+      <!-- <div class="container">
+        <div class="row">
+          <div class="col"></div>
+        </div>
 
-        <%= yield %>
+        <div class="row">
+          <div class="col-md-3"></div>
+          <div class="col-md-6"></div>
+          <div class="col-md-3"></div>
+        </div>
 
-      <footer class="branding">
-        <small>&copy; 2021 <strong>FridgeTracker</strong></small>
-      </footer>
+        <div class="row">
+          <div class="col-md-3">
+          </div>
+
+          <div class="col-md-6"> -->
+
+            <%= yield %>
+
+            <footer class="branding">
+              <small>&copy; 2021 <strong>FridgeTracker</strong></small>
+            </footer>
+          
+          <!-- </div>
+
+          <div class="col-md-3">
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-3"></div>
+          <div class="col-md-6"><br><br></div>
+          <div class="col-md-3"></div>
+        </div>
+
+        <div class="row">
+          <div class="col"></div>
+        </div>
+      </div> -->
     </div>
 
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
@@ -28,5 +64,7 @@
       <script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.2/CFInstall.min.js"></script>
       <script>window.attachEvent("onload",function(){CFInstall.check({mode:"overlay"})})</script>
     <![endif]-->
+    <!-- Bootstrap JS Plugins
+    <script src="/js/bootstrap.bundle.min.js"></script> -->
   </body>
 </html>
