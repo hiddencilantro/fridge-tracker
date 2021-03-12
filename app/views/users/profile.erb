@@ -1,11 +1,16 @@
 <h2>Manage Your Profile</h2>
 
+<% if @message %>
+    <p style="color: #168216"><%= @message %></p>
+<% end %>
+
 <p>Username: <%= "#{current_user.username}" %></p>
 <p>Name: <%= "#{current_user.firstname} #{current_user.lastname}" %></p>
 <br>
 
 <form action=<%= "/users/#{current_user.id}/profile/edit" %> method="GET">
     <button>Edit Profile</button>
+    <button formaction=<%= "/users/#{current_user.id}/profile/password" %>>Change Password</button>
 </form>
 <br>
 <form action=<%= "/users/#{current_user.id}/delete"%> method="GET">
