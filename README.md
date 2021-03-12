@@ -13,6 +13,6 @@ This application lets users create personalized lists to track the items in thei
 Feel free to report bugs or request pulls on [GitHub](https://github.com/hiddencilantro/CLI-project).
 
 ## Links
-[Video demo]()
+[Video demo](https://vimeo.com/522959605)
 
-[Blog]()
+[Blog](https://dev.to/hiddencilantro/using-sessions-in-a-stateless-protocol-3jpk)
